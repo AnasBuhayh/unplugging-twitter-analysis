@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "social", "label": "social", "shape": "dot", "size": 10}, {"id": "media", "label": "media", "shape": "dot", "size": 10}, {"id": "break", "label": "break", "shape": "dot", "size": 10}, {"id": "time", "label": "time", "shape": "dot", "size": 10}, {"id": "scroll", "label": "scroll", "shape": "dot", "size": 10}, {"id": "addiction", "label": "addiction", "shape": "dot", "size": 10}, {"id": "use", "label": "use", "shape": "dot", "size": 10}, {"id": "away", "label": "away", "shape": "dot", "size": 10}, {"id": "disconnect", "label": "disconnect", "shape": "dot", "size": 10}, {"id": "medias", "label": "medias", "shape": "dot", "size": 10}, {"id": "people", "label": "people", "shape": "dot", "size": 10}, {"id": "amp", "label": "amp", "shape": "dot", "size": 10}, {"id": "using", "label": "using", "shape": "dot", "size": 10}, {"id": "happiness", "label": "happiness", "shape": "dot", "size": 10}, {"id": "get", "label": "get", "shape": "dot", "size": 10}, {"id": "health", "label": "health", "shape": "dot", "size": 10}, {"id": "back", "label": "back", "shape": "dot", "size": 10}, {"id": "love", "label": "love", "shape": "dot", "size": 10}, {"id": "take", "label": "take", "shape": "dot", "size": 10}, {"id": "addicted", "label": "addicted", "shape": "dot", "size": 10}, {"id": "stay", "label": "stay", "shape": "dot", "size": 10}, {"id": "think", "label": "think", "shape": "dot", "size": 10}, {"id": "like", "label": "like", "shape": "dot", "size": 10}, {"id": "dont", "label": "dont", "shape": "dot", "size": 10}, {"id": "real", "label": "real", "shape": "dot", "size": 10}, {"id": "mental", "label": "mental", "shape": "dot", "size": 10}, {"id": "really", "label": "really", "shape": "dot", "size": 10}, {"id": "doesnt", "label": "doesnt", "shape": "dot", "size": 10}, {"id": "much", "label": "much", "shape": "dot", "size": 10}, {"id": "bad", "label": "bad", "shape": "dot", "size": 10}, {"id": "mixed", "label": "mixed", "shape": "dot", "size": 10}, {"id": "youre", "label": "youre", "shape": "dot", "size": 10}, {"id": "today", "label": "today", "shape": "dot", "size": 10}, {"id": "general", "label": "general", "shape": "dot", "size": 10}, {"id": "every", "label": "every", "shape": "dot", "size": 10}, {"id": "app", "label": "app", "shape": "dot", "size": 10}, {"id": "issues", "label": "issues", "shape": "dot", "size": 10}, {"id": "taking", "label": "taking", "shape": "dot", "size": 10}, {"id": "need", "label": "need", "shape": "dot", "size": 10}, {"id": "screen", "label": "screen", "shape": "dot", "size": 10}, {"id": "spend", "label": "spend", "shape": "dot", "size": 10}, {"id": "care", "label": "care", "shape": "dot", "size": 10}, {"id": "going", "label": "going", "shape": "dot", "size": 10}, {"id": "n", "label": "n", "shape": "dot", "size": 10}, {"id": "gonna", "label": "gonna", "shape": "dot", "size": 10}, {"id": "past", "label": "past", "shape": "dot", "size": 10}, {"id": "life", "label": "life", "shape": "dot", "size": 10}, {"id": "see", "label": "see", "shape": "dot", "size": 10}, {"id": "want", "label": "want", "shape": "dot", "size": 10}, {"id": "know", "label": "know", "shape": "dot", "size": 10}, {"id": "wanna", "label": "wanna", "shape": "dot", "size": 10}, {"id": "even", "label": "even", "shape": "dot", "size": 10}, {"id": "forget", "label": "forget", "shape": "dot", "size": 10}, {"id": "feel", "label": "feel", "shape": "dot", "size": 10}, {"id": "around", "label": "around", "shape": "dot", "size": 10}, {"id": "step", "label": "step", "shape": "dot", "size": 10}, {"id": "lot", "label": "lot", "shape": "dot", "size": 10}, {"id": "dying", "label": "dying", "shape": "dot", "size": 10}, {"id": "appreciate", "label": "appreciate", "shape": "dot", "size": 10}, {"id": "anyone", "label": "anyone", "shape": "dot", "size": 10}, {"id": "anything", "label": "anything", "shape": "dot", "size": 10}, {"id": "robs", "label": "robs", "shape": "dot", "size": 10}, {"id": "erase", "label": "erase", "shape": "dot", "size": 10}, {"id": "delete", "label": "delete", "shape": "dot", "size": 10}, {"id": "unfollow", "label": "unfollow", "shape": "dot", "size": 10}, {"id": "unfriend", "label": "unfriend", "shape": "dot", "size": 10}, {"id": "peace", "label": "peace", "shape": "dot", "size": 10}, {"id": "value", "label": "value", "shape": "dot", "size": 10}, {"id": "better", "label": "better", "shape": "dot", "size": 10}, {"id": "come", "label": "come", "shape": "dot", "size": 10}, {"id": "shit", "label": "shit", "shape": "dot", "size": 10}, {"id": "hey", "label": "hey", "shape": "dot", "size": 10}, {"id": "guys", "label": "guys", "shape": "dot", "size": 10}, {"id": "block", "label": "block", "shape": "dot", "size": 10}, {"id": "deep", "label": "deep", "shape": "dot", "size": 10}, {"id": "digital", "label": "digital", "shape": "dot", "size": 10}, {"id": "minimalism", "label": "minimalism", "shape": "dot", "size": 10}, {"id": "something", "label": "something", "shape": "dot", "size": 10}, {"id": "else", "label": "else", "shape": "dot", "size": 10}, {"id": "make", "label": "make", "shape": "dot", "size": 10}, {"id": "sure", "label": "sure", "shape": "dot", "size": 10}]);
+        edges = new vis.DataSet([{"from": "social", "to": "media", "weight": 7}, {"from": "social", "to": "break", "weight": 39}, {"from": "social", "to": "time", "weight": 32}, {"from": "social", "to": "scroll", "weight": 23}, {"from": "social", "to": "addiction", "weight": 16}, {"from": "social", "to": "use", "weight": 15}, {"from": "social", "to": "away", "weight": 11}, {"from": "social", "to": "disconnect", "weight": 9}, {"from": "social", "to": "medias", "weight": 7}, {"from": "social", "to": "people", "weight": 7}, {"from": "social", "to": "amp", "weight": 6}, {"from": "social", "to": "using", "weight": 6}, {"from": "social", "to": "happiness", "weight": 6}, {"from": "social", "to": "get", "weight": 6}, {"from": "social", "to": "health", "weight": 6}, {"from": "social", "to": "back", "weight": 5}, {"from": "social", "to": "love", "weight": 5}, {"from": "social", "to": "take", "weight": 5}, {"from": "social", "to": "addicted", "weight": 4}, {"from": "social", "to": "stay", "weight": 4}, {"from": "social", "to": "think", "weight": 4}, {"from": "social", "to": "like", "weight": 4}, {"from": "media", "to": "addiction", "weight": 38}, {"from": "media", "to": "dont", "weight": 9}, {"from": "media", "to": "real", "weight": 8}, {"from": "media", "to": "use", "weight": 8}, {"from": "media", "to": "mental", "weight": 6}, {"from": "media", "to": "really", "weight": 6}, {"from": "media", "to": "break", "weight": 5}, {"from": "media", "to": "doesnt", "weight": 5}, {"from": "media", "to": "amp", "weight": 5}, {"from": "media", "to": "much", "weight": 5}, {"from": "media", "to": "take", "weight": 5}, {"from": "media", "to": "bad", "weight": 5}, {"from": "media", "to": "mixed", "weight": 5}, {"from": "media", "to": "scroll", "weight": 4}, {"from": "media", "to": "youre", "weight": 4}, {"from": "media", "to": "today", "weight": 4}, {"from": "media", "to": "general", "weight": 4}, {"from": "media", "to": "every", "weight": 4}, {"from": "media", "to": "app", "weight": 4}, {"from": "mental", "to": "health", "weight": 104}, {"from": "health", "to": "issues", "weight": 5}, {"from": "break", "to": "take", "weight": 28}, {"from": "break", "to": "taking", "weight": 8}, {"from": "break", "to": "need", "weight": 5}, {"from": "time", "to": "screen", "weight": 25}, {"from": "time", "to": "take", "weight": 22}, {"from": "time", "to": "much", "weight": 7}, {"from": "time", "to": "need", "weight": 7}, {"from": "time", "to": "every", "weight": 7}, {"from": "time", "to": "taking", "weight": 5}, {"from": "time", "to": "get", "weight": 5}, {"from": "time", "to": "spend", "weight": 4}, {"from": "take", "to": "care", "weight": 8}, {"from": "take", "to": "going", "weight": 5}, {"from": "take", "to": "n", "weight": 4}, {"from": "take", "to": "gonna", "weight": 4}, {"from": "scroll", "to": "past", "weight": 5}, {"from": "real", "to": "life", "weight": 15}, {"from": "life", "to": "dont", "weight": 9}, {"from": "dont", "to": "need", "weight": 12}, {"from": "dont", "to": "people", "weight": 9}, {"from": "dont", "to": "see", "weight": 9}, {"from": "dont", "to": "want", "weight": 7}, {"from": "dont", "to": "think", "weight": 6}, {"from": "dont", "to": "know", "weight": 6}, {"from": "dont", "to": "wanna", "weight": 5}, {"from": "dont", "to": "even", "weight": 5}, {"from": "dont", "to": "forget", "weight": 5}, {"from": "dont", "to": "feel", "weight": 4}, {"from": "need", "to": "around", "weight": 8}, {"from": "need", "to": "disconnect", "weight": 5}, {"from": "away", "to": "step", "weight": 5}, {"from": "feel", "to": "like", "weight": 10}, {"from": "like", "to": "people", "weight": 4}, {"from": "people", "to": "around", "weight": 8}, {"from": "people", "to": "lot", "weight": 5}, {"from": "people", "to": "dying", "weight": 4}, {"from": "see", "to": "appreciate", "weight": 6}, {"from": "anyone", "to": "anything", "weight": 9}, {"from": "anyone", "to": "disconnect", "weight": 7}, {"from": "anything", "to": "robs", "weight": 6}, {"from": "disconnect", "to": "erase", "weight": 4}, {"from": "delete", "to": "unfollow", "weight": 7}, {"from": "unfollow", "to": "unfriend", "weight": 5}, {"from": "robs", "to": "peace", "weight": 5}, {"from": "appreciate", "to": "value", "weight": 5}, {"from": "happiness", "to": "love", "weight": 5}, {"from": "get", "to": "better", "weight": 4}, {"from": "back", "to": "come", "weight": 5}, {"from": "love", "to": "peace", "weight": 5}, {"from": "shit", "to": "going", "weight": 5}, {"from": "hey", "to": "guys", "weight": 5}, {"from": "unfriend", "to": "block", "weight": 5}, {"from": "mixed", "to": "deep", "weight": 5}, {"from": "digital", "to": "minimalism", "weight": 4}, {"from": "something", "to": "else", "weight": 4}, {"from": "make", "to": "sure", "weight": 4}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
