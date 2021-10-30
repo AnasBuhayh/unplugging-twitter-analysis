@@ -12,7 +12,7 @@ Answering this question will help us develop an understanding of people’s rela
 
 # Data Analysis
 
-I used different natural language processing tools to approach our problem. Each of these tools helps to provide a specific answer. Using different methods allowed us to triangulate in our data analysis. We used Python in our data analysis. We summarized tweets. Built word clouds and network graphs and measured the sentiment of the tweets.
+I used different natural language processing tools to approach our problem. Each of these tools helped to provide a specific answer. Using different methods allowed us to triangulate in our data analysis. We used Python in our data analysis. We summarized tweets. Built word clouds and network graphs and measured the sentiment of the tweets.
 
 # Frames
 
