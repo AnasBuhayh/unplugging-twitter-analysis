@@ -10,11 +10,11 @@ How do Twitter users talk about their disconnection from social media?
 
 Answering this question will help us develop an understanding of people’s relationships with social media, and why do they decide to take a break. 
 
-# Data Analysis
+# Methods
 
 I used different natural language processing tools to approach our problem. Each of these tools helped to provide a specific answer. Using different methods allowed us to triangulate in our data analysis. We used Python in our data analysis. We summarized tweets. Built word clouds and network graphs and measured the sentiment of the tweets.
 
-# Frames
+# Discussion
 
 Using triangulation from the four different approaches, we can see that the tweets in the dataset fall under four categories. 
 - Time Consumption: Users show a significant concern regarding their time on social media, and some describe it as an addiction. And the trouble comes from that social media is taking them away from more important things.
